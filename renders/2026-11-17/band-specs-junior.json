@@ -1,0 +1,4 @@
+[
+ {"act":"band","venue":"Generations Restaurant & Pub","venue_logo":"t-generations-old-logo-502.png","town":"Wheeling, WV","date":"2026-12-05","time":"21:30","address":"338 National Rd, Wheeling, WV 26003","step":"3wk","headline":"2 WEEKS OUT","format":"feed","out":"band-generations-2wk-feed.png"},
+ {"act":"band","venue":"Stage AE","venue_logo":null,"town":"Pittsburgh, PA","date":"2026-12-20","time":"10:30","address":"400 N Shore Dr, Pittsburgh, PA 15212","step":"announce","tag":"Free Steelers Tailgate","format":"feed","out":"band-stageae-tailgate-announce-feed.png"}
+]
