@@ -1,0 +1,61 @@
+[
+ {
+  "act": "band",
+  "step": "10d",
+  "venue": "Generations",
+  "venue_logo": "t-generations-old-logo-502.png",
+  "town": "Wheeling, WV",
+  "date": "2026-12-05",
+  "time": "21:30",
+  "address": "338 National Rd, Wheeling, WV 26003",
+  "out": "band-generations-10d-feed.png"
+ },
+ {
+  "act": "band",
+  "step": "announce",
+  "venue": "Stage AE",
+  "venue_logo": null,
+  "town": "Pittsburgh, PA",
+  "tag": "Free Steelers Tailgate",
+  "date": "2026-12-20",
+  "time": "10:30",
+  "address": "400 N Shore Dr, Pittsburgh, PA 15212",
+  "out": "band-stageae-announce-feed.png",
+  "photo": "band-wall.jpg"
+ },
+ {
+  "act": "lite",
+  "step": "tomorrow",
+  "venue": "HillBilly's Grub & Pub",
+  "venue_logo": "t-venue-hillbillys.png",
+  "town": "Donegal, PA",
+  "date": "2026-11-21",
+  "time": "19:00",
+  "address": "3531 SR-31, Donegal, PA 15628",
+  "out": "lite-hillbillys-tomorrow-feed.png"
+ },
+ {
+  "act": "lite",
+  "step": "tonight",
+  "format": "story",
+  "venue": "HillBilly's Grub & Pub",
+  "venue_logo": "t-venue-hillbillys.png",
+  "town": "Donegal, PA",
+  "date": "2026-11-21",
+  "time": "19:00",
+  "address": "3531 SR-31, Donegal, PA 15628",
+  "out": "lite-hillbillys-tonight-story.png"
+ },
+ {
+  "act": "junior",
+  "step": "3wk",
+  "venue": "Your Venue",
+  "venue_logo": null,
+  "town": "Anytown, PA",
+  "date": "2026-12-31",
+  "time": "19:00",
+  "address": "Venue address goes here",
+  "sample": true,
+  "out": "junior-sample-feed.png"
+ }
+]

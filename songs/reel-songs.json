@@ -1,0 +1,8 @@
+{
+  "rule": "Use only Junior's own recordings. Never use \"Haily's Song\" (any version) or \"Monster Mash\" (cover). Rotate so each reel uses a different song than the last.",
+  "excluded": ["Haily's Song", "Monster Mash"],
+  "songs": [
+    {"title": "Who's Gonna Love Me", "artist": "Junior Guthrie", "clip": "whos-gonna-love-me-hook.m4a", "start_in_song": "2:30", "confirmed_original": false, "note": "Released under Junior's name; songwriter not yet confirmed by Junior"}
+  ],
+  "last_used": {"title": "Who's Gonna Love Me", "date": "2026-11-18", "post": "Push Lite This Weekend reel"}
+}
