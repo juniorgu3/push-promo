@@ -1,17 +1,47 @@
 {
-  "rule": "Use only Junior's own recordings. Never use \"Haily's Song\" (any version) or \"Monster Mash\" (cover). Rotate so each reel uses a different song than the last.",
+  "rule": "Use only Junior's own released songs (he confirmed all his released songs are his originals, Nov 17 2026). Never use \"Haily's Song\" (Without You In It) in any version, \"Monster Mash\" (cover), or acoustic covers. Rotate so each reel uses a different song than the last.",
   "excluded": [
-    "Haily's Song",
-    "Monster Mash"
+    "Without You In It (Haily's Song)",
+    "Monster Mash",
+    "Ships That Don't Come In (cover)",
+    "Check Yes Or No (cover)",
+    "Where The Corn Don't Grow (cover)"
   ],
   "songs": [
     {
       "title": "Who's Gonna Love Me",
-      "artist": "Junior Guthrie",
+      "artist": "Junior Guthrie (feat. Junior and The Push)",
       "clip": "whos-gonna-love-me-hook.m4a",
       "start_in_song": "2:30",
-      "confirmed_original": true,
-      "note": "Written by Junior (confirmed Nov 17 2026)"
+      "confirmed_original": true
+    },
+    {
+      "title": "Pittsburgh, PA",
+      "artist": "Junior and The Push",
+      "clip": "pittsburgh-pa-hook.m4a",
+      "start_in_song": "2:53",
+      "confirmed_original": true
+    },
+    {
+      "title": "Guitars, Whiskey and Women",
+      "artist": "Junior and The Push",
+      "clip": "guitars-whiskey-and-women-hook.m4a",
+      "start_in_song": "2:33",
+      "confirmed_original": true
+    },
+    {
+      "title": "My Brother and Me",
+      "artist": "Junior Guthrie (feat. Junior and The Push)",
+      "clip": "my-brother-and-me-hook.m4a",
+      "start_in_song": "2:08",
+      "confirmed_original": true
+    },
+    {
+      "title": "The One I'd Pick",
+      "artist": "Junior Guthrie (feat. Junior and The Push)",
+      "clip": "the-one-id-pick-hook.m4a",
+      "start_in_song": "2:05",
+      "confirmed_original": true
     }
   ],
   "last_used": {
@@ -27,5 +57,12 @@
       "Praesidus"
     ],
     "note": "Unfinished works in progress (Junior, Nov 17 2026). Never use in reels until he says they're done."
-  }
+  },
+  "rotation_order": [
+    "Who's Gonna Love Me",
+    "Pittsburgh, PA",
+    "Guitars, Whiskey and Women",
+    "My Brother and Me",
+    "The One I'd Pick"
+  ]
 }
