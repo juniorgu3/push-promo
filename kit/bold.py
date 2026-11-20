@@ -19,6 +19,16 @@ ACTS = {
                  rib='#16243F', gold='#D99A1E', handle='@juniorguthriemusic', site='juniorguthrie.com'),
 }
 
+def trange(d, end=None):
+    """'7–10 PM', or '10:30 AM–12 PM' when the show crosses noon/midnight."""
+    st = d.strftime('%-I:%M').replace(':00', '')
+    if not end: return f"{st} {d.strftime('%p')}"
+    eh, _, em = str(end).partition(':'); eh = int(eh) % 12; em = int(em or 0)
+    e = d.replace(minute=em, hour=eh)
+    while e <= d: e += datetime.timedelta(hours=12)
+    en = e.strftime('%-I:%M').replace(':00', '')
+    return f"{st}–{en} {e.strftime('%p')}" if e.strftime('%p') == d.strftime('%p') else f"{st} {d.strftime('%p')}–{en} {e.strftime('%p')}"
+
 def ribbon_svg(w, h, face, tail):
     """Hatch-style banner: flat face, folded tails with V notches. Pure shapes, no gradients."""
     t = h * .55; d = h * .22  # tail length, fold drop
@@ -38,8 +48,7 @@ def html(s):
     head = (s.get('headline') or ribbon_text(s['step'], dt.hour))
     words = head.split()
     head_html = head; two = False
-    t1 = dt.strftime('%-I:%M').replace(':00', '')
-    tstr = (t1 + ('–' + s['end'] if s.get('end') else '') + ' ' + dt.strftime('%p'))
+    tstr = trange(dt, s.get('end'))
     town, st = (s['town'].split(',') + [''])[:2]; st = st.strip().upper()
     place = f"{town.strip().upper()}, {STATES.get(st, st)}"
     photo = s.get('photo') or a['photo']
@@ -56,7 +65,7 @@ def html(s):
         cols = []
         for sh in s['shows']:
             d2 = datetime.datetime.strptime(sh['date'] + ' ' + sh['time'], '%Y-%m-%d %H:%M')
-            t2 = d2.strftime('%-I:%M').replace(':00', '') + ('–' + sh['end'] if sh.get('end') else '') + ' ' + d2.strftime('%p')
+            t2 = trange(d2, sh.get('end'))
             l2 = sh.get('venue_logo'); f2 = 'mix-blend-mode:multiply'
             if l2 and a.get('dark'):
                 alt = l2.replace('.png', '-white.png')
@@ -64,8 +73,8 @@ def html(s):
                 else: f2 = 'filter:invert(1) grayscale(1) brightness(.9)'
             v2 = f"<img class='mlogo' style='{f2}' src='{uri(l2)}'>" if l2 else f"<div class='mname'>{sh['venue'].upper()}</div>"
             tw, st2 = (sh['town'].split(',') + [''])[:2]
-            cols.append(f"<div class='mcol'><div class='mday'>{d2.strftime('%a').upper()} &middot; {d2.strftime('%b').upper()} {d2.day}</div>{v2}"
-                        f"<div class='mtown'>{tw.strip().upper()}, {st2.strip().upper()}</div><div class='mrib'><span>{t2}</span></div></div>")
+            cols.append(f"<div class='mcol'><div class='mday'>{d2.strftime('%a').upper()} &middot; {d2.strftime('%b').upper()} {d2.day}</div><div class='mv'>{v2}</div>"
+                        f"<div class='mtown'>{tw.strip().upper()}, {st2.strip().upper()}</div><div class='mrib'><span style='font-size:{min(48, int(330 / (len(t2) * .6)))}px'>{t2}</span></div></div>")
         multi = f"<div class='at'>&#9733; LIVE AT &#9733;</div><div class='multi'>{'<div class=msep></div>'.join(cols)}</div>" + \
                 (f"<div class='follow'>FOLLOW <b>{s['follow']}</b></div>" if s.get('follow') else '')
     bg_uri, fg_uri, (pw, ph) = frame_photo(photo, 1000, ph, s.get('frac', a['frac']), 'torn')
@@ -118,10 +127,11 @@ body{{width:{W}px;height:{H}px;background:{a.get('paper', PAPER)};position:relat
 .mcol{{width:440px;display:flex;flex-direction:column;align-items:center}}
 .msep{{width:0;border-left:4px solid {a['ink']};margin:10px 0}}
 .mday{{font:58px/1 slab;color:{a['hot']};white-space:nowrap}}
-.mlogo{{margin-top:10px;height:{190 if not story else 260}px;max-width:420px;object-fit:contain}}
-.mname{{margin-top:12px;font:52px/1 slab;white-space:nowrap}}
+.mv{{margin-top:10px;height:{190 if not story else 260}px;display:flex;align-items:center;justify-content:center}}
+.mlogo{{height:100%;max-width:420px;object-fit:contain}}
+.mname{{font:60px/1.05 slab;text-align:center}}
 .mtown{{margin-top:10px;font:36px/1 goth;letter-spacing:5px;white-space:nowrap;-webkit-text-stroke:1.1px currentColor}}
-.mrib{{margin-top:12px;width:400px;height:96px;background:url("{ribm}") no-repeat;background-size:100% 100%;display:flex;justify-content:center;padding-top:12px}}
+.mrib{{margin-top:12px;width:400px;height:96px;background:url("{ribm}") no-repeat;background-size:100% 100%;display:flex;justify-content:center;align-items:center;padding-bottom:16px}}
 .mrib span{{font:48px/1 slab;color:{a.get('ribtext', '#F6EEDC')};white-space:nowrap}}
 .follow{{margin-top:auto;padding-top:14px;font:46px/1 goth;letter-spacing:6px;white-space:nowrap;-webkit-text-stroke:1.2px currentColor}}
 .follow b{{color:{a['hot']};font-weight:400}}
