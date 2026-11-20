@@ -61,9 +61,12 @@ def html(s):
     multi = ''
     ph = s.get('photo_h', 375 + (330 if story else 0) - (45 if vh > (185 if not story else 220) else 0))
     if s.get('shows'):
-        ph = s.get('photo_h', 330 + (330 if story else 0))
+        ph = s.get('photo_h', 330 + (330 if story else 0) + (0 if all(x.get('venue_logo') for x in s['shows']) else 150))
         cols = []
+        all_logos = all(sh.get('venue_logo') for sh in s['shows'])   # mixed logo + typed name looks lopsided: type them all
         for sh in s['shows']:
+            if not all_logos: sh = {**sh, 'venue_logo': None}
+            nsize = min(64 if not story else 72, *[int(410 / (max(len(w) for w in x['venue'].upper().split()) * .72)) for x in s['shows']])
             d2 = datetime.datetime.strptime(sh['date'] + ' ' + sh['time'], '%Y-%m-%d %H:%M')
             t2 = trange(d2, sh.get('end'))
             l2 = sh.get('venue_logo'); f2 = 'mix-blend-mode:multiply'
@@ -71,9 +74,9 @@ def html(s):
                 alt = l2.replace('.png', '-white.png')
                 if os.path.exists(os.path.join(A, alt)): l2 = alt; f2 = ''
                 else: f2 = 'filter:invert(1) grayscale(1) brightness(.9)'
-            v2 = f"<img class='mlogo' style='{f2}' src='{uri(l2)}'>" if l2 else f"<div class='mname'>{sh['venue'].upper()}</div>"
+            v2 = f"<img class='mlogo' style='{f2}' src='{uri(l2)}'>" if l2 else f"<div class='mname' style='font-size:{nsize}px'>{sh['venue'].upper()}</div>"
             tw, st2 = (sh['town'].split(',') + [''])[:2]
-            cols.append(f"<div class='mcol'><div class='mday'>{d2.strftime('%a').upper()} &middot; {d2.strftime('%b').upper()} {d2.day}</div><div class='mv'>{v2}</div>"
+            cols.append(f"<div class='mcol'><div class='mday'>{d2.strftime('%a').upper()} &middot; {d2.strftime('%b').upper()} {d2.day}</div><div class='mv' style='{"" if l2 else "height:auto;margin:14px 0 4px"}'>{v2}</div>"
                         f"<div class='mtown'>{tw.strip().upper()}, {st2.strip().upper()}</div><div class='mrib'><span style='font-size:{min(48, int(330 / (len(t2) * .6)))}px'>{t2}</span></div></div>")
         multi = f"<div class='at'>&#9733; LIVE AT &#9733;</div><div class='multi'>{'<div class=msep></div>'.join(cols)}</div>" + \
                 (f"<div class='follow'>FOLLOW <b>{s['follow']}</b></div>" if s.get('follow') else '')
@@ -129,7 +132,7 @@ body{{width:{W}px;height:{H}px;background:{a.get('paper', PAPER)};position:relat
 .mday{{font:58px/1 slab;color:{a['hot']};white-space:nowrap}}
 .mv{{margin-top:10px;height:{190 if not story else 260}px;display:flex;align-items:center;justify-content:center}}
 .mlogo{{height:100%;max-width:420px;object-fit:contain}}
-.mname{{font:60px/1.05 slab;text-align:center}}
+.mname{{font:{64 if not story else 72}px/1.02 slab;text-align:center;max-width:420px}}
 .mtown{{margin-top:10px;font:36px/1 goth;letter-spacing:5px;white-space:nowrap;-webkit-text-stroke:1.1px currentColor}}
 .mrib{{margin-top:12px;width:400px;height:96px;background:url("{ribm}") no-repeat;background-size:100% 100%;display:flex;justify-content:center;align-items:center;padding-bottom:16px}}
 .mrib span{{font:48px/1 slab;color:{a.get('ribtext', '#F6EEDC')};white-space:nowrap}}
