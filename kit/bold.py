@@ -143,7 +143,7 @@ body{{width:{W}px;height:{H}px;background:{a.get('paper', PAPER)};position:relat
 .foot2 b{{color:{a['hot']};margin:0 12px}}
 </style></head><body>
 <div class='paper1'></div><div class='paper2'></div>{'' if dark else distress(photo)}
-<div class='frame'></div>
+{'' if dark else "<div class='frame'></div>"}
 <div class='wrap'>
   <div class='stars'>{stars}</div>
   <img class='logo' src='{uri(a['logo'])}'>
