@@ -4,8 +4,8 @@ Show promo kit for Junior and The Push, Push Lite and Junior Guthrie. The weekly
 
 ## What's here
 
-- `kit/`: the locked-in poster kit (Nov 14 2026): cream concert-poster layout, torn-print photo, each act's logo and colors. See `kit/README.md`.
-  - Render: `cd kit && python3 heritage.py specs.json out/`
+- `kit/`: poster kit. **Current style (approved Nov 20 2026): `bold.py`** — bold Hatch Show letterpress: huge wood-type headline, big torn-print photo, "★ LIVE AT ★" in block letters, venue logo as hero, date/time on a ribbon banner. Band/Junior: cream paper, red headline w/ navy offset shadow, navy ribbon. Push Lite: its own colors — slate-navy base (not black), silver Push/gold LITE logo, gold headline + gold ribbon; dark-ink venue logos auto-switch to their `-white.png` version or get inverted.
+  - Render: `cd kit && python3 bold.py specs.json out/` (older styles: `heritage.py`, `render.py`)
   - Needs: `pip install --break-system-packages playwright rembg onnxruntime opencv-python-headless scipy pillow numpy`, Chrome at `/usr/bin/google-chrome`
   - Venue logos live in `kit/assets/` as `t-venue-<name>.png`
 - `songs/`: short hook clips of Junior's own recordings for reels, plus `reel-songs.json` (rotation list and exclusions).
