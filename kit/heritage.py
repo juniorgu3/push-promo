@@ -56,7 +56,7 @@ def _b64(im, fmt='JPEG'):
     b = io.BytesIO(); im.save(b, fmt, **({'quality': 90} if fmt == 'JPEG' else {}))
     return f"data:image/{'jpeg' if fmt == 'JPEG' else 'png'};base64," + base64.b64encode(b.getvalue()).decode()
 
-def frame_photo(photo, pw, ph, frac=.85, style='layers'):
+def frame_photo(photo, pw, ph, frac=.85, style='layers', raw=False):
     """Auto-frame on the people (from the person matte) so nobody is ever cropped, then build two layers:
     a soft faded background and the people with a soft aura that only dissolves at the very bottom."""
     import numpy as np
@@ -107,9 +107,10 @@ def frame_photo(photo, pw, ph, frac=.85, style='layers'):
     img = big.crop(box).resize((OW, OH), Image.LANCZOS)
     # brighten: auto levels, lift shadows (gamma), touch more pop
     from PIL import ImageEnhance
-    img = ImageOps.autocontrast(img, cutoff=(0.5, 0.3))
-    lut = [int(255 * (i / 255) ** 0.78) for i in range(256)]; img = img.point(lut * 3)
-    img = ImageEnhance.Brightness(img).enhance(1.06); img = ImageEnhance.Color(img).enhance(1.08)
+    if not raw:  # raw=True keeps the photo's original look (no brightening)
+        img = ImageOps.autocontrast(img, cutoff=(0.5, 0.3))
+        lut = [int(255 * (i / 255) ** 0.78) for i in range(256)]; img = img.point(lut * 3)
+        img = ImageEnhance.Brightness(img).enhance(1.06); img = ImageEnhance.Color(img).enhance(1.08)
     mt = mb.crop(box).resize((OW, OH), Image.LANCZOS)
     ins = np.asarray(inside.crop(box).resize((OW, OH)).filter(ImageFilter.GaussianBlur(OW * .05)), float) / 255
     yy = np.linspace(0, 1, OH)[:, None]; xx = np.linspace(0, 1, OW)[None, :]
