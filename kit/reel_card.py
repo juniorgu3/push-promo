@@ -21,7 +21,7 @@ ACTS = {
   'lite':   dict(logo='t-pushlite-logo.png', bg='#18202D', hot='#E2A72E', ink='#DADDE2', handle='@pushlitemusic',
                  site='lite.juniorandthepush.com', tagline='JUNIOR & DAVE, SOMETIMES JEFF…', photo='pushlite-duo-wide.jpg', frac=1.0),
   'junior': dict(logo='t-junior-logo.png', bg='#161C27', hot='#D99A1E', ink='#F1EADB', handle='@juniorguthriemusic',
-                 site='juniorguthrie.com', tagline='JUNIOR AND THE PUSH FRONTMAN', photo='junior-acoustic.jpg', frac=1.0),
+                 site='juniorguthrie.com', tagline='SINGER · SONGWRITER · GUITARIST', photo='junior-acoustic.jpg', frac=1.0),
 }
 ZOOM = 1.03   # slow push-in, centred on the safe band so nothing leaves it
 

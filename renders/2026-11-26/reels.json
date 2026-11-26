@@ -1,4 +1,21 @@
-[{"act":"lite","song":"Pittsburgh, PA","artist":"Junior and The Push","clip":"pittsburgh-pa-hook.m4a",
-  "hook":"BLACK FRIDAY|SOUNDTRACK","sub":"No lines. No doorbusters. Just this one.","out":"lite-pittsburgh-pa-reel"},
- {"act":"junior","song":"My Brother and Me","artist":"Junior Guthrie feat. Junior and The Push","clip":"my-brother-and-me-hook.m4a",
-  "hook":"FOR THE DRIVE|HOME","sub":"Call your brother on the way.","out":"junior-my-brother-and-me-reel"}]
+[
+ {
+  "act": "lite",
+  "song": "Pittsburgh, PA",
+  "artist": "Junior and The Push",
+  "clip": "pittsburgh-pa-hook.m4a",
+  "hook": "BLACK FRIDAY|SOUNDTRACK",
+  "sub": "No lines. No doorbusters. Just this one.",
+  "out": "lite-pittsburgh-pa-reel"
+ },
+ {
+  "act": "junior",
+  "song": "My Brother and Me",
+  "artist": "Junior Guthrie feat. Junior and The Push",
+  "clip": "my-brother-and-me-hook.m4a",
+  "hook": "FOR THE DRIVE|HOME",
+  "sub": "Call your brother on the way.",
+  "out": "junior-my-brother-and-me-reel",
+  "tagline": "SINGER · SONGWRITER · GUITARIST"
+ }
+]
