@@ -1,0 +1,5 @@
+[{"act":"band","step":"10d","headline":"1 WEEK OUT","format":"feed","venue":"Generations Restaurant & Pub","venue_logo":"t-generations-old-logo-502.png","town":"Wheeling, WV","date":"2026-12-05","time":"21:30","address":"338 National Rd, Wheeling, WV 26003","out":"band-generations-1wk-feed.jpg"},
+ {"act":"lite","headline":"THANK YOU","at_label":"LAST WEEKEND AT","format":"feed","photo":"pushlite-duo3.jpg","follow":"@PUSHLITEMUSIC",
+  "shows":[{"date":"2026-11-20","time":"19:00","end":"10","venue":"The Junction Tavern","venue_logo":"t-venue-junction.png","town":"Perryopolis, PA"},
+           {"date":"2026-11-21","time":"19:00","end":"10","venue":"HillBilly's Grub & Pub","venue_logo":"t-venue-hillbillys.png","town":"Donegal, PA"}],
+  "out":"lite-thank-you-feed.jpg"}]

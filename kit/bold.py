@@ -78,7 +78,7 @@ def html(s):
             tw, st2 = (sh['town'].split(',') + [''])[:2]
             cols.append(f"<div class='mcol'><div class='mday'>{d2.strftime('%a').upper()} &middot; {d2.strftime('%b').upper()} {d2.day}</div><div class='mv' style='{"" if l2 else "height:auto;margin:14px 0 4px"}'>{v2}</div>"
                         f"<div class='mtown'>{tw.strip().upper()}, {st2.strip().upper()}</div><div class='mrib'><span style='font-size:{min(48, int(330 / (len(t2) * .6)))}px'>{t2}</span></div></div>")
-        multi = f"<div class='at'>&#9733; LIVE AT &#9733;</div><div class='multi'>{'<div class=msep></div>'.join(cols)}</div>" + \
+        multi = f"<div class='at'>&#9733; {s.get('at_label', 'LIVE AT')} &#9733;</div><div class='multi'>{'<div class=msep></div>'.join(cols)}</div>" + \
                 (f"<div class='follow'>FOLLOW <b>{s['follow']}</b></div>" if s.get('follow') else '')
     bg_uri, fg_uri, (pw, ph) = frame_photo(photo, 1000, ph, s.get('frac', a['frac']), 'torn')
     pw, ph = int(pw), int(ph)
@@ -149,7 +149,7 @@ body{{width:{W}px;height:{H}px;background:{a.get('paper', PAPER)};position:relat
   <img class='logo' src='{uri(a['logo'])}'>
   <div class='head'>{head_html}</div>
   <div class='photo'><img src='{bg_uri}'></div>
-  {multi or f'''<div class='vrow'><div class='at'>&#9733; LIVE AT &#9733;</div>{venue}</div>
+  {multi or f'''<div class='vrow'><div class='at'>&#9733; {s.get('at_label', 'LIVE AT')} &#9733;</div>{venue}</div>
   <div class='place'>{place}</div>
   <div class='rib'><span>{dt.strftime('%a').upper()} <span class='g'>{dt.strftime('%b').upper()} {dt.day}</span> &middot; {tstr}</span></div>
   <div class='foot'>{s['address']}</div>'''}
